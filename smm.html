@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Management - Rocket Rail Marketing</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --accent-color: #28a745;
+            --dark-color: #343a40;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--accent-color);
+        }
+
+        .section-title.text-start::after {
+            left: 0;
+            transform: none;
+        }
+
+        .benefit-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefit-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .platform-card {
+            background: white;
+            border: 2px solid #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .platform-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 123, 255, 0.1);
+        }
+
+        .platform-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .facebook { color: #1877f2; }
+        .instagram { color: #e4405f; }
+        .twitter { color: #1da1f2; }
+        .linkedin { color: #0077b5; }
+        .youtube { color: #ff0000; }
+        .tiktok { color: #000000; }
+
+        .pricing-section {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .pricing-card.featured {
+            border: 3px solid var(--accent-color);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured::before {
+            content: 'BEST VALUE';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-color);
+            color: white;
+            padding: 8px 25px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 20px 0;
+        }
+
+        .price small {
+            font-size: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .btn-custom {
+            background: var(--accent-color);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            color: white;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-custom:hover {
+            background: #218838;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-custom {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            background: transparent;
+        }
+
+        .btn-outline-custom:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+        }
+
+        .footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list i {
+            color: var(--accent-color);
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="fas fa-rocket me-2"></i>Rocket Rail Marketing</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <h1 class="display-4 mb-4">Social Media Management</h1>
+                    <p class="lead mb-4">Transform your social media presence with professional content creation and strategic management across all platforms. Build your brand, engage your audience, and drive real business results.</p>
+                    <div>
+                        <a href="#pricing" class="btn btn-custom btn-lg me-3">View Pricing</a>
+                        <a href="#contact" class="btn btn-outline-light btn-lg">Get Started</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="text-center">
+                        <i class="fas fa-users" style="font-size: 12rem; opacity: 0.3;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Why Your Business Needs Social Media Content</h2>
+                <p class="lead">Professional social media management delivers measurable results for your business</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h5 class="mb-3">Increase Brand Awareness</h5>
+                        <p>Consistent, quality content keeps your brand top-of-mind and helps you reach new potential customers through organic discovery and social sharing.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h5 class="mb-3">Build Customer Loyalty</h5>
+                        <p>Regular engagement and valuable content creates emotional connections with your audience, turning followers into loyal customers and brand advocates.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h5 class="mb-3">Improve Customer Service</h5>
+                        <p>Social media provides a direct line of communication with customers, allowing you to address concerns quickly and showcase excellent customer service publicly.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h5 class="mb-3">Boost SEO Rankings</h5>
+                        <p>Active social media profiles and quality content improve your online presence and can positively impact your search engine rankings and visibility.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h5 class="mb-3">Generate Quality Leads</h5>
+                        <p>Strategic content and engagement attracts your ideal customers, generating high-quality leads that are more likely to convert into paying customers.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <h5 class="mb-3">Cost-Effective Marketing</h5>
+                        <p>Social media marketing delivers one of the highest ROIs compared to traditional advertising, allowing you to reach thousands of potential customers affordably.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platforms Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Essential Social Media Platforms for Your Business</h2>
+                <p class="lead">We manage your presence across the platforms where your customers spend their time</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="platform-card">
+                        <div class="platform-icon facebook">
+                            <i class="fab fa-facebook"></i>
+                        </div>
+                        <h5>Facebook</h5>
+                        <p>With 2.9 billion users, Facebook is essential for reaching a broad audience. Perfect for community building, customer service, and detailed business information.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="platform-card">
+                        <div class="platform-icon instagram">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <h5>Instagram</h5>
+                        <p>Visual storytelling platform with 2 billion users. Ideal for showcasing products, behind-the-scenes content, and building brand personality.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="platform-card">
+                        <div class="platform-icon linkedin">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <h5>LinkedIn</h5>
+                        <p>The premier professional network with 900 million users. Essential for B2B businesses, thought leadership, and professional networking.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="platform-card">
+                        <div class="platform-icon twitter">
+                            <i class="fab fa-twitter"></i>
+                        </div>
+                        <h5>Twitter/X</h5>
+                        <p>Real-time communication platform with 450 million users. Great for customer service, industry news, and engaging in trending conversations.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="platform-card">
+                        <div class="platform-icon youtube">
+                            <i class="fab fa-youtube"></i>
+                        </div>
+                        <h5>YouTube</h5>
+                        <p>The world's second-largest search engine with 2.7 billion users. Perfect for educational content, tutorials, and building trust through video.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="platform-card">
+                        <div class="platform-icon tiktok">
+                            <i class="fab fa-tiktok"></i>
+                        </div>
+                        <h5>TikTok</h5>
+                        <p>Fast-growing platform with 1 billion users, especially popular with younger demographics. Ideal for creative, entertaining, and viral content.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Do Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="section-title text-start">What's Included in Our Service</h2>
+                    <p class="lead">We handle everything so you can focus on running your business while we grow your online presence.</p>
+                    <ul class="feature-list mt-4">
+                        <li><i class="fas fa-check"></i> Custom content creation tailored to your brand</li>
+                        <li><i class="fas fa-check"></i> Weekly posts across multiple platforms</li>
+                        <li><i class="fas fa-check"></i> Hashtag research and optimization</li>
+                        <li><i class="fas fa-check"></i> Community management and engagement</li>
+                        <li><i class="fas fa-check"></i> Monthly performance reports</li>
+                        <li><i class="fas fa-check"></i> Content calendar planning</li>
+                        <li><i class="fas fa-check"></i> Brand voice development</li>
+                        <li><i class="fas fa-check"></i> Competitor analysis</li>
+                        <li><i class="fas fa-check"></i> Crisis management support</li>
+                        <li><i class="fas fa-check"></i> Direct access to your dedicated manager</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <div class="text-center">
+                        <i class="fas fa-clipboard-list" style="font-size: 12rem; color: var(--accent-color); opacity: 0.8;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Simple, Transparent Pricing</h2>
+                <p class="lead">Professional social media management that fits your budget</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-5 col-md-6 mb-4">
+                    <div class="pricing-card">
+                        <h4 class="mb-3">Monthly Plan</h4>
+                        <div class="price">$50<small>/month</small></div>
+                        <p class="text-muted">Perfect for getting started</p>
+                        <ul class="feature-list text-start">
+                            <li><i class="fas fa-check"></i> Weekly content on multiple platforms</li>
+                            <li><i class="fas fa-check"></i> Custom graphics and captions</li>
+                            <li><i class="fas fa-check"></i> Hashtag optimization</li>
+                            <li><i class="fas fa-check"></i> Community engagement</li>
+                            <li><i class="fas fa-check"></i> Monthly analytics report</li>
+                            <li><i class="fas fa-check"></i> Email support</li>
+                        </ul>
+                        <div class="mt-4">
+                            <a href="#contact" class="btn btn-outline-custom">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-6 mb-4">
+                    <div class="pricing-card featured">
+                        <h4 class="mb-3">Annual Plan</h4>
+                        <div class="price">$25<small>/month</small></div>
+                        <p class="text-muted">Save 50% with annual billing</p>
+                        <ul class="feature-list text-start">
+                            <li><i class="fas fa-check"></i> Everything in Monthly Plan</li>
+                            <li><i class="fas fa-check"></i> Priority support</li>
+                            <li><i class="fas fa-check"></i> Quarterly strategy reviews</li>
+                            <li><i class="fas fa-check"></i> Additional platform coverage</li>
+                            <li><i class="fas fa-check"></i> Custom branded templates</li>
+                            <li><i class="fas fa-check"></i> Phone support included</li>
+                        </ul>
+                        <div class="mt-4">
+                            <a href="#contact" class="btn btn-custom">Choose Annual</a>
+                        </div>
+                        <small class="text-muted d-block mt-2">Billed annually ($300/year)</small>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <p class="text-muted">All plans include a 30-day money-back guarantee. No setup fees or long-term contracts required.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="section-title text-start">Ready to Boost Your Social Media Presence?</h2>
+                    <p class="lead">Let's discuss how we can help your business grow through strategic social media management.</p>
+                    <div class="contact-info mt-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-phone me-3"></i>
+                            <span>text: (708) 526-8241</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-envelope me-3"></i>
+                            <span>admin@rocketrailmarketing.com</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-map-marker-alt me-3"></i>
+                            <span>Dallas, Texas</span>
+                        </div>
+                    </div>
+                    <div class="social-links mt-4">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="bg-white p-4 rounded">
+                        <h5 class="text-dark mb-4">Get Your Free Social Media Audit</h5>
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <input type="text" class="form-control" placeholder="Your Name" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <input type="email" class="form-control" placeholder="Your Email" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Business Name" required>
+                            </div>
+                            <div class="mb-3">
+                                <select class="form-select" required>
+                                    <option selected disabled>Preferred Plan</option>
+                                    <option value="monthly">Monthly Plan ($50/month)</option>
+                                    <option value="annual">Annual Plan ($25/month)</option>
+                                    <option value="consultation">Free Consultation First</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" rows="4" placeholder="Tell us about your business and social media goals" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-custom w-100">Get Started Today</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <h5><i class="fas fa-rocket me-2"></i>Rocket Rail Marketing</h5>
+                    <p>Boosting your digital presence with innovative marketing solutions and cutting-edge web development.</p>
+                </div>
+                <div class="col-lg-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-light text-decoration-none">Home</a></li>
+                        <li><a href="index.html#services" class="text-light text-decoration-none">All Services</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">Social Media Management</a></li>
+                        <li><a href="index.html#about" class="text-light text-decoration-none">About</a></li>
+                        <li><a href="index.html#contact" class="text-light text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5>Our Services</h5>
+                    <ul class="list-unstyled">
+                        <li>Website Development</li>
+                        <li>E-Commerce Solutions</li>
+                        <li>Social Media Management</li>
+                        <li>Social Media Advertising</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2025 Rocket Rail Marketing. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

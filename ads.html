@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Advertising - Rocket Rail Marketing</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --accent-color: #28a745;
+            --dark-color: #343a40;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .platform-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 100%;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .platform-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .platform-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .facebook-icon { background: linear-gradient(45deg, #1877f2, #42a5f5); }
+        .instagram-icon { background: linear-gradient(45deg, #e4405f, #fccc63); }
+        .youtube-icon { background: linear-gradient(45deg, #ff0000, #ff6b6b); }
+        .linkedin-icon { background: linear-gradient(45deg, #0077b5, #4fc3f7); }
+        .tiktok-icon { background: linear-gradient(45deg, #000000, #ff0050); }
+        .x-icon { background: linear-gradient(45deg, #000000, #1da1f2); }
+        .pinterest-icon { background: linear-gradient(45deg, #bd081c, #e60023); }
+        .snapchat-icon { background: linear-gradient(45deg, #fffc00, #ffd700); }
+        .google-icon { background: linear-gradient(45deg, #4285f4, #34a853); }
+
+        .stats-section {
+            background: var(--dark-color);
+            color: white;
+            padding: 80px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .services-section {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+        }
+
+        .btn-custom {
+            background: var(--accent-color);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            background: #218838;
+            transform: translateY(-2px);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--accent-color);
+        }
+
+        .footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-feature {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .service-feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/"><i class="fas fa-rocket me-2"></i>Rocket Rail Marketing</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <h1 class="display-4 mb-4 animate-on-scroll">Social Media Advertising</h1>
+                    <p class="lead mb-4 animate-on-scroll">Maximize your ROI with targeted advertising campaigns across all major social media platforms. We create compelling ad creative and optimize for precise audience targeting to drive real business results.</p>
+                    <div class="animate-on-scroll">
+                        <a href="#platforms" class="btn btn-custom btn-lg me-3">View Platforms</a>
+                        <a href="#contact" class="btn btn-outline-light btn-lg">Get Started</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="text-center animate-on-scroll">
+                        <i class="fas fa-bullhorn" style="font-size: 15rem; opacity: 0.3;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-item animate-on-scroll">
+                        <div class="stat-number">$276B</div>
+                        <h5>Global Social Ad Spend 2025</h5>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-item animate-on-scroll">
+                        <div class="stat-number">9.37%</div>
+                        <h5>Annual Growth Rate</h5>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-item animate-on-scroll">
+                        <div class="stat-number">30%</div>
+                        <h5>Of Digital Ad Spending</h5>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-item animate-on-scroll">
+                        <div class="stat-number">9+</div>
+                        <h5>Advertising Platforms</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platforms Section -->
+    <section id="platforms" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title animate-on-scroll">Advertising Platforms We Master</h2>
+                <p class="lead animate-on-scroll">We run effective ad campaigns across all major social media and digital advertising platforms</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card platform-card animate-on-scroll">
+                        <div class="card-body text-center p-4">
+                            <div class="platform-icon facebook-icon">
+                                <i class="fab fa-facebook-f"></i>
+                            </div>
+                            <h5 class="card-title mb-3">Facebook Ads</h5>
+                            <p class="card-text">Reach 2.9 billion monthly active users with advanced targeting options. Perfect for brand awareness, lead generation, and driving website traffic with detailed audience insights.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card platform-card animate-on-scroll">
+                        <div class="card-body text-center p-4">
+                            <div class="platform-icon instagram-icon">
+                                <i class="fab fa-instagram"></i>
+                            </div>
+                            <h5 class="card-title mb-3">Instagram Ads</h5>
+                            <p class="card-text">Visual storytelling at its finest. Ideal for lifestyle brands, e-commerce, and businesses targeting younger demographics through Stories, Reels, and feed placements.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card platform-card animate-on-scroll">
+                        <div class="card-body text-center p-4">
+                            <div class="platform-icon youtube-icon">
+                                <i class="fab fa-youtube"></i>
+                            </div>
+                            <h5 class="card-title mb-3">YouTube Ads</h5>
+                            <p class="card-text">Video advertising powerhouse with skippable and non-skippable formats. Great for product demonstrations, brand storytelling, and reaching audiences during content consumption.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card platform-card animate-on-scroll">
+                        <div class="card-body text-center p-4">
+                            <div class="platform-icon linkedin-icon">
+                                <i class="fab fa-linkedin-in"></i>
+                            </div>
+                            <h5 class="card-title mb-3">LinkedIn Ads</h5>
+                            <p class="card-text">The premier B2B advertising platform. Perfect for professional services, recruitment, and targeting decision-makers with precise job title and company targeting.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card platform-card animate-on-scroll">
+                        <div class="card-body text-center p-4">
+                            <div class="platform-icon tiktok-icon">
+                                <i class="fab fa-tiktok"></i>
+                            </div>
+                            <h5 class="card-title mb-3">TikTok Ads</h5>
+                            <p class="card-text">Capture Gen Z and millennial audiences with creative short-form video content. Excellent for brand awareness campaigns and driving engagement with trending content.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card platform-card animate-on-scroll">
+                        <div class="card-body text-center p-4">
+                            <div class="platform-icon x-icon">
+                                <i class="fab fa-x-twitter"></i>
+                            </div>
+                            <h5 class="card-title mb-3">X (Twitter) Ads</h5>
+                            <p class="card-text">Real-time engagement and conversation-driven advertising. Ideal for news, events, customer service, and reaching audiences during trending topics and live events.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card platform-card animate-on-scroll">
+                        <div class="card-body text-center p-4">
+                            <div class="platform-icon pinterest-icon">
+                                <i class="fab fa-pinterest-p"></i>
+                            </div>
+                            <h5 class="card-title mb-3">Pinterest Ads</h5>
+                            <p class="card-text">Visual discovery platform perfect for lifestyle, home decor, fashion, and food brands. Great for driving website traffic and reaching users with purchase intent.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card platform-card animate-on-scroll">
+                        <div class="card-body text-center p-4">
+                            <div class="platform-icon snapchat-icon">
+                                <i class="fab fa-snapchat-ghost"></i>
+                            </div>
+                            <h5 class="card-title mb-3">Snapchat Ads</h5>
+                            <p class="card-text">Reach younger audiences with AR filters and vertical video ads. Perfect for mobile-first campaigns and brands targeting Gen Z with creative, interactive content.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card platform-card animate-on-scroll">
+                        <div class="card-body text-center p-4">
+                            <div class="platform-icon google-icon">
+                                <i class="fab fa-google"></i>
+                            </div>
+                            <h5 class="card-title mb-3">Google Ads</h5>
+                            <p class="card-text">Search and display advertising across Google's network. Essential for capturing high-intent users actively searching for your products or services.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title animate-on-scroll">Our Advertising Services</h2>
+                <p class="lead animate-on-scroll">Comprehensive social media advertising solutions designed to maximize your return on investment</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="service-feature animate-on-scroll">
+                        <div class="feature-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h4>Strategic Campaign Planning</h4>
+                        <p>We develop comprehensive advertising strategies tailored to your business goals, target audience, and budget. Our data-driven approach ensures maximum ROI across all platforms.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="service-feature animate-on-scroll">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4>Precision Audience Targeting</h4>
+                        <p>Leverage advanced targeting options including demographics, interests, behaviors, and custom audiences to reach the right people at the right time with your message.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="service-feature animate-on-scroll">
+                        <div class="feature-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h4>Creative Ad Development</h4>
+                        <p>Our creative team produces compelling ad copy, stunning visuals, and engaging video content that captures attention and drives action across all platform formats.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="service-feature animate-on-scroll">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4>Performance Optimization</h4>
+                        <p>Continuous monitoring and optimization of campaigns using A/B testing, budget allocation, and bid strategies to improve performance and reduce costs.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="service-feature animate-on-scroll">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h4>Multi-Platform Management</h4>
+                        <p>Seamlessly manage campaigns across multiple platforms with consistent messaging and optimized creative for each platform's unique requirements and audience behaviors.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="service-feature animate-on-scroll">
+                        <div class="feature-icon">
+                            <i class="fas fa-analytics"></i>
+                        </div>
+                        <h4>Detailed Analytics & Reporting</h4>
+                        <p>Comprehensive reporting with actionable insights, ROI tracking, and transparent performance metrics to demonstrate the value of your advertising investment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="animate-on-scroll">
+                        <h2 class="section-title text-start">Ready to Boost Your Ad Performance?</h2>
+                        <p class="lead">Let's create targeted advertising campaigns that deliver real results for your business. Our team of experts will help you reach the right audience and maximize your advertising ROI.</p>
+                        <div class="contact-info mt-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-phone me-3"></i>
+                                <span>text: (708) 526-8241</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-envelope me-3"></i>
+                                <span>admin@rocketrailmarketing.com</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-map-marker-alt me-3"></i>
+                                <span>Dallas Texas</span>
+                            </div>
+                        </div>
+                        <div class="social-links mt-4">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="animate-on-scroll">
+                        <form class="contact-form" name="ads-contact" method="POST" data-netlify="true">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <input type="text" class="form-control" placeholder="Your Name" name="name" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <input type="email" class="form-control" placeholder="Your Email" name="email" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <select class="form-select" name="platforms" required>
+                                    <option selected disabled>Select Advertising Platform(s)</option>
+                                    <option value="facebook-instagram">Facebook & Instagram</option>
+                                    <option value="google">Google Ads</option>
+                                    <option value="youtube">YouTube Ads</option>
+                                    <option value="linkedin">LinkedIn Ads</option>
+                                    <option value="tiktok">TikTok Ads</option>
+                                    <option value="twitter">X (Twitter) Ads</option>
+                                    <option value="pinterest">Pinterest Ads</option>
+                                    <option value="snapchat">Snapchat Ads</option>
+                                    <option value="all">All Platforms</option>
+                                    <option value="custom">Custom Package</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Monthly Ad Budget Range" name="budget">
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" rows="4" name="goals" placeholder="Tell us about your advertising goals and target audience" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-custom btn-lg w-100">Get Your Ad Strategy</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <h5><i class="fas fa-rocket me-2"></i>Rocket Rail Marketing</h5>
+                    <p>Boosting your digital presence with innovative marketing solutions and cutting-edge web development.</p>
+                </div>
+                <div class="col-lg-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/" class="text-light text-decoration-none">Home</a></li>
+                        <li><a href="/#services" class="text-light text-decoration-none">Services</a></li>
+                        <li><a href="/#about" class="text-light text-decoration-none">About</a></li>
+                        <li><a href="/#contact" class="text-light text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5>Advertising Platforms</h5>
+                    <ul class="list-unstyled">
+                        <li>Facebook & Instagram Ads</li>
+                        <li>Google & YouTube Ads</li>
+                        <li>LinkedIn & TikTok Ads</li>
+                        <li>Pinterest & Snapchat Ads</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2025 Rocket Rail Marketing. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animate on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('animated');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll(); // Initial check
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your interest in our advertising services! We\'ll get back to you soon with a custom strategy.');
+            this.reset();
+        });
+
+        // Update navbar on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
