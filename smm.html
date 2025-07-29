@@ -533,30 +533,41 @@
                 <div class="col-lg-6">
                     <div class="bg-white p-4 rounded">
                         <h5 class="text-dark mb-4">Get Your Free Social Media Audit</h5>
-                        <form>
+                        <form class="contact-form" 
+                        name="contact" 
+                        method="POST" 
+                        data-netlify="true" 
+                        netlify-honeypot="bot-field"
+                        data-netlify-recaptcha="true"
+                        >
+                            <!-- Hidden bot field for spam protection -->
+                            <p class="d-none">
+                                <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                            </p>
+                            
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <input type="text" class="form-control" placeholder="Your Name" required>
+                                    <input type="text" class="form-control" placeholder="Your Name" name="name" required>
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <input type="email" class="form-control" placeholder="Your Email" required>
+                                    <input type="email" class="form-control" placeholder="Your Email" name="email" required>
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <input type="text" class="form-control" placeholder="Business Name" required>
-                            </div>
-                            <div class="mb-3">
-                                <select class="form-select" required>
-                                    <option selected disabled>Preferred Plan</option>
-                                    <option value="monthly">Monthly Plan ($50/month)</option>
-                                    <option value="annual">Annual Plan ($25/month)</option>
-                                    <option value="consultation">Free Consultation First</option>
+                                <select class="form-select" name="service" required>
+                                    <option selected disabled>Select Service</option>
+                                    <option value="website">Website Development</option>
+                                    <option value="ecommerce">E-Commerce Solutions</option>
+                                    <option value="social-management">Social Media Management</option>
+                                    <option value="social-ads">Social Media Ads</option>
+                                    <option value="all">All Services</option>
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <textarea class="form-control" rows="4" placeholder="Tell us about your business and social media goals" required></textarea>
+                                <textarea class="form-control" rows="5" name="message" placeholder="Tell us about your project" required></textarea>
                             </div>
-                            <button type="submit" class="btn btn-custom w-100">Get Started Today</button>
+                            <div data-netlify-recaptcha="true"></div>
+                            <button type="submit" class="btn btn-custom btn-lg w-100">Send Message</button>
                         </form>
                     </div>
                 </div>

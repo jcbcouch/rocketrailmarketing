@@ -475,7 +475,18 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="animate-on-scroll">
-                        <form class="contact-form" name="ads-contact" method="POST" data-netlify="true">
+                        <form class="contact-form" 
+                        name="contact" 
+                        method="POST" 
+                        data-netlify="true" 
+                        netlify-honeypot="bot-field"
+                        data-netlify-recaptcha="true"
+                        >
+                            <!-- Hidden bot field for spam protection -->
+                            <p class="d-none">
+                                <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                            </p>
+                            
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <input type="text" class="form-control" placeholder="Your Name" name="name" required>
@@ -485,27 +496,20 @@
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <select class="form-select" name="platforms" required>
-                                    <option selected disabled>Select Advertising Platform(s)</option>
-                                    <option value="facebook-instagram">Facebook & Instagram</option>
-                                    <option value="google">Google Ads</option>
-                                    <option value="youtube">YouTube Ads</option>
-                                    <option value="linkedin">LinkedIn Ads</option>
-                                    <option value="tiktok">TikTok Ads</option>
-                                    <option value="twitter">X (Twitter) Ads</option>
-                                    <option value="pinterest">Pinterest Ads</option>
-                                    <option value="snapchat">Snapchat Ads</option>
-                                    <option value="all">All Platforms</option>
-                                    <option value="custom">Custom Package</option>
+                                <select class="form-select" name="service" required>
+                                    <option selected disabled>Select Service</option>
+                                    <option value="website">Website Development</option>
+                                    <option value="ecommerce">E-Commerce Solutions</option>
+                                    <option value="social-management">Social Media Management</option>
+                                    <option value="social-ads">Social Media Ads</option>
+                                    <option value="all">All Services</option>
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <input type="text" class="form-control" placeholder="Monthly Ad Budget Range" name="budget">
+                                <textarea class="form-control" rows="5" name="message" placeholder="Tell us about your project" required></textarea>
                             </div>
-                            <div class="mb-3">
-                                <textarea class="form-control" rows="4" name="goals" placeholder="Tell us about your advertising goals and target audience" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-custom btn-lg w-100">Get Your Ad Strategy</button>
+                            <div data-netlify-recaptcha="true"></div>
+                            <button type="submit" class="btn btn-custom btn-lg w-100">Send Message</button>
                         </form>
                     </div>
                 </div>
